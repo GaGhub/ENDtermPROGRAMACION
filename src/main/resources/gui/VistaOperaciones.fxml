@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="gui.HelloController"
+      fx:controller="Controller.OperacionesController"
       spacing="12"
       style="-fx-padding: 20; -fx-background-color: #F4F6F9;"
       prefWidth="700" prefHeight="450" >

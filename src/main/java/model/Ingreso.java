@@ -42,7 +42,9 @@ Corrección de la profe: Igual que he explicado en Gasto que en Gasto para permi
      * MÉTUDO GETTER
 Permite que la tabla de la interfaz gráfica lea el origen del ingreso.
      */
+        @Override
     public String getOrigen() {
+        // Los ingresos devuelven su origen
         return origen;
     }
 }

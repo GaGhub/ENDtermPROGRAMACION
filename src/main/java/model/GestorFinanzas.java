@@ -1,56 +1,53 @@
 package model;
 
+import java.util.Set;      // Añado Set
+import java.util.TreeSet;   // Importo la implementación TreeSet
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /*
- Esta clase recupera la lógica que tenía en el Midterm. Es el "cerebro" que sabe sumar importes y gestionar la lista.
+ GESTOR DE FINANZAS (TreeSet)
+ Cumple con el requisito de almacenamiento ordenado automático.
  */
 public class GestorFinanzas {
 
-    // Lista donde guardaré todos los Gastos e Ingresos. Ahora los tengo agrupados en la misma lista.
-    private List<Operacion> listaOperaciones;
+    /*
+  Tarea #1: Usar TreeSet en lugar de ArrayList.
+ El TreeSet mantendrá las operaciones ordenadas por fecha automáticamente gracias al compareTo() de la clase Operacion.
+     */
+    private Set<Operacion> listaOperaciones;
 
-    // Constructor que inicializa la lista vacía
     public GestorFinanzas() {
-        this.listaOperaciones = new ArrayList<>();
+        // Inicializo como TreeSet
+        this.listaOperaciones = new TreeSet<>();
     }
 
     /*
-     FUNCIÓN: Listar (Tarea #1 del EndTerm)
-     Añado una operación y ordeno la lista automáticamente por fecha.
+ FUNCIÓN: Añadir Operación
+Al usar TreeSet, la colección se encarga de colocar el objeto en la posición correcta según su fecha.
      */
     public void añadirOperacion(Operacion op) {
         listaOperaciones.add(op);
-        // Gracias a que Operacion es "implements Comparable", puedo ordenar así:
-        Collections.sort(listaOperaciones);
+        // Ya no necesito Collections.sort() El TreeSet nunca se desordena.
     }
 
     /*
-   FUNCIÓN: Consultar Saldo (Lógica recuperada del Midterm)
-   Recorre la lista y suma ingresos o resta gastos.
+ FUNCIÓN: Obtener lista (para la tabla de la interfaz). Como la tabla de JavaFX (TableView) prefiere trabajar con Listas, convierto el Set a una Lista justo antes de enviarlo.
      */
+    public List<Operacion> getListaOperaciones() {
+        return new ArrayList<>(listaOperaciones);
+    }
+
     public double calcularSaldoActual() {
         double saldo = 0;
         for (Operacion op : listaOperaciones) {
-            // Si la operación es un Ingreso, sumamos
             if (op instanceof Ingreso) {
                 saldo += op.getImporte();
-            }
-            // Si es un Gasto, restamos
-            else if (op instanceof Gasto) {
+            } else if (op instanceof Gasto) {
                 saldo -= op.getImporte();
             }
         }
         return saldo;
     }
-
-    /*
-   FUNCIÓN: Obtener lista
-   Devuelve la lista para que la Tabla de la interfaz (GUI) pueda mostrarla.
-     */
-    public List<Operacion> getListaOperaciones() {
-        return listaOperaciones;
-    }
 }
+

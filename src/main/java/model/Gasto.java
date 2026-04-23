@@ -21,7 +21,7 @@ public class Gasto extends Operacion {
      */
     public Gasto(String descripcion, double importe, LocalDate fecha, Categoria categoria, MetodoPago metodoPago) {
         /*
-     "Inheritance Super keyword":
+     Para que hereden de Operacion, como se solicita en el ejercicio 1
       Uso 'super' para llamar al constructor del padre (Operacion). Esto guarda la descripción, el importe y la fecha en la parte "común".
          */
         super(descripcion, importe, fecha);
@@ -32,19 +32,19 @@ public class Gasto extends Operacion {
     }
 
     /*
-CONSTRUCTOR 2: SIN DESCRIPCIÓN (Sobrecarga)
- Según la corrección de la profe: mejor si dispongo de dos constructores que permitan crear un Gasto con y sin descripción. Así que lo separo.
+CONSTRUCTOR 2: SIN DESCRIPCIÓN
+ Según la corrección de la profe: mejor si dispongo de dos constructores que permitan crear un Gasto con y sin descripción.
      */
     public Gasto(double importe, LocalDate fecha, Categoria categoria, MetodoPago metodoPago) {
         /*
-    Llamamos al constructor de arriba (el completo). Al poner 'null' en el primer hueco, indico que no hay descripción.
+    Llamo al constructor de arriba (el completo). Al poner 'null' en el primer hueco, indico que no hay descripción.
          */
         this(null, importe, fecha, categoria, metodoPago);
     }
 
     /*
 MÉTODOS GETTER
-Me permiten leer la categoría y el métudo de pago desde la interfaz gráfica.
+Permiten leer la categoría y el métudo de pago desde la interfaz gráfica.
      */
     public Categoria getCategoria() {
         return categoria;
@@ -52,5 +52,11 @@ Me permiten leer la categoría y el métudo de pago desde la interfaz gráfica.
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
+    }
+
+    @Override
+    public String getOrigen() {
+        // Los gastos devuelven su categoría como texto
+        return (categoria != null) ? categoria.toString() : "OTROS";
     }
 }
