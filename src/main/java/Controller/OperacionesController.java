@@ -71,6 +71,8 @@ public class OperacionesController {
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colTipo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         colOrigen.setCellValueFactory(new PropertyValueFactory<>("origen"));
+        // Llamada limpia a la clase de utilidad que he creado para precargar datos.
+        TestData.precargarDatos(this.gestor);
         // Una vez configuradas las columnas, se llenará la tabla con lo que tenga el gestor
         actualizarTabla();
     }

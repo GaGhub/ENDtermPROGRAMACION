@@ -38,8 +38,15 @@ public abstract class Operacion implements Comparable<Operacion> {
      */
     @Override
     public int compareTo(Operacion otra) {
-        // Usa el compareTo que ya viene dentro de las fechas de Java
-        return this.fecha.compareTo(otra.fecha);
+        // Comparación Fecha
+        int resultado = this.fecha.compareTo(otra.fecha);
+
+        // Si la fecha es igual, desempato por importe
+        if (resultado == 0) {
+            resultado = Double.compare(this.importe, otra.importe);
+        }
+
+        return resultado;
     }
     /*
     MÉTOUDO PARA LA TABLA: Obtener el tipo

@@ -32,22 +32,11 @@ Al usar TreeSet, la colección se encarga de colocar el objeto en la posición c
     }
 
     /*
- FUNCIÓN: Obtener lista (para la tabla de la interfaz). Como la tabla de JavaFX (TableView) prefiere trabajar con Listas, convierto el Set a una Lista justo antes de enviarlo.
+ FUNCIÓN: Obtener lista (para la tabla de la interfaz). Como la tabla de JavaFX (TableView) necesita trabajar con Listas, convierto el Set a una Lista justo antes de enviarlo.
      */
     public List<Operacion> getListaOperaciones() {
         return new ArrayList<>(listaOperaciones);
     }
 
-    public double calcularSaldoActual() {
-        double saldo = 0;
-        for (Operacion op : listaOperaciones) {
-            if (op instanceof Ingreso) {
-                saldo += op.getImporte();
-            } else if (op instanceof Gasto) {
-                saldo -= op.getImporte();
-            }
-        }
-        return saldo;
-    }
 }
 
