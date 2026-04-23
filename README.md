@@ -1,3 +1,4 @@
+
 # ENDTerm
 - He modificado el launcher para que apunte a gui en lugar de a console.  Ahora apunta a "HelloApplication"
 - He creado la carpeta model dentro de java para añadir los enums que me solicitó la profesora en el midterm (Categoría y MetodoPago). Con esto sustituyo los Strings que usaba en el midterm.
@@ -24,3 +25,4 @@
 - Modifico la implantación de las ArrayList por los TreeSet. Como ya había implementado la interfaz "Comparable" en la clase "Operacion" para comparar por fecha, el TreeSet utilizará ese método "compareTo" cada vez que añada un elemento. Ya no necesitaré llamar a Collections.sort().  
 - En el gestor de finanzas vuelco el TreeSet a una ArrayList para poder transportar los datos. Después, en HelloController creo la lista observable para devolverla en la tabla.
 - Me he dado cuenta que el ejercicio requería crear un controlador para Operaciones, yo había editado directamente el HelloController. Así que lo he reestructurado entero creando la carpeta "Controller" y añadiendo dentro los 
+
