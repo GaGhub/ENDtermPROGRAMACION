@@ -1,3 +1,4 @@
+
 # ENDTerm
 - He modificado el launcher para que apunte a gui en lugar de a console.  Ahora apunta a "HelloApplication"
 - He creado la carpeta model dentro de java para añadir los enums que me solicitó la profesora en el midterm (Categoría y MetodoPago). Con esto sustituyo los Strings que usaba en el midterm.
@@ -14,5 +15,5 @@
 - He modificado el archivo VistaOperaciones.fxml para que sepa quien es el controlador, añadiendo "fx:controller="gui.HelloController". También he añadido onAction para decirle al botón que debe hacer cuando haga clic.
 - He modificado el archivo NuevaOperacion.fxml para que sepa quien es el controlador, añadiendo fx:controller="gui.NuevaOperacionController".
 - He modificado HelloApplication para que busque "VistaOperaciones.fxml" dentro de la carpeta "gui" de resources.  
-- PRUEBAS: Actualmente se ejecuta el GUI mostrando el título "Gestión de Finanzas Personales", Mostrando categorías (Tipo, Descripción, Importe(€), Fecha y Origen/Categoria). Además se muestra "No hay operaciones resgistradas.). También aparece el botón (+Nueva Operación). Pero al hacer clic se muestra el mensaje "ERROR: No se ha podido cargar la ventana de Nueva Operación." Lo que indica que reconoce el botón. 
+- PRUEBAS: Actualmente se ejecuta el GUI mostrando el título "Gestión de Finanzas Personales", Mostrando categorías (Tipo, Descripción, Importe(€), Fecha y Origen/Categoria). Además se muestra "No hay operaciones resgistradas.). También aparece el botón (+Nueva Operación). Pero al hacer clic se muestra el mensaje "ERROR: No se ha podido cargar la ventana de Nueva Operación." Lo que indica que reconoce el botón.  
 
