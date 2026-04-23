@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="gui.NuevaOperacionController"
+      fx:controller="Controller.NuevaOperacionController"
       spacing="14"
       style="-fx-padding: 24; -fx-background-color: white;"
       prefWidth="380">
@@ -55,12 +55,14 @@
                 defaultButton="true"
                 maxWidth="Infinity"
                 HBox.hgrow="ALWAYS"
+                onAction="#onGuardarClick"
                 style="-fx-background-color: #1A237E; -fx-text-fill: white; -fx-font-weight: bold;"/>
 
         <Button fx:id="btnCancelar"
                 text="Cancelar"
                 cancelButton="true"
                 maxWidth="Infinity"
+                onAction="#onCancelarClick"
                 HBox.hgrow="ALWAYS"/>
     </HBox>
 

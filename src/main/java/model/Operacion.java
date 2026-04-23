@@ -4,11 +4,9 @@ package model;
 import java.time.LocalDate;
 
 /*
- * CLASE ABSTRACTA OPERACIÓN (Clase Padre / Superclase)
-  "Inheritance Abstract classes":
- * Usa la palabra 'abstract' porque esta clase es una "categorización". Nunca crearemos una "Operación" a secas, sino un Gasto o un Ingreso.
-  "Multiple inheritance Interfaces":
- * Añadimos 'implements Comparable' para obligar a esta clase a tener una regla de comparación, lo que nos permitirá ordenar la lista por fecha.
+CLASE ABSTRACTA OPERACIÓN (Clase Padre / Superclase)
+  "Inheritance Abstract classes": Usa la palabra 'abstract' porque esta clase es una "categorización". Nunca crearemos una "Operación" a secas, sino un Gasto o un Ingreso.
+ Multiple inheritance Interfaces": Añado 'implements Comparable' para obligar a esta clase a tener una regla de comparación, lo que me permitirá ordenar la lista por fecha.
  */
 public abstract class Operacion implements Comparable<Operacion> {
 
@@ -34,20 +32,31 @@ public abstract class Operacion implements Comparable<Operacion> {
 
     /*
      MÉTUDO DE COMPARACIÓN (MÉTUDO SOBRESCRITO)
-    "Multiple inheritance Interfaces":
-     Al implementar la interfaz Comparable, estay obligado a escribir el métudo 'compareTo'. Este métudo decide si una operación va antes o
-     después que otra. En este caso, uso la fecha para decidir el orden.
+   Multiple inheritance Interfaces":
+    Al implementar la interfaz Comparable, estay obligado a escribir el métudo "compareTo". Este métudo decide si una operación va antes o
+    después que otra. En este caso, uso la fecha para decidir el orden.
      */
     @Override
     public int compareTo(Operacion otra) {
         // Usa el compareTo que ya viene dentro de las fechas de Java
         return this.fecha.compareTo(otra.fecha);
     }
+    /*
+    MÉTOUDO PARA LA TABLA: Obtener el tipo
+    Uso "instanceof" para saber qué clase hija es en tiempo de ejecución.
+     */
+    public String getTipo() {
+        return (this instanceof Gasto) ? "Gasto" : "Ingreso";
+    }
 
     /*
+   MÉTUDO ABSTRACTO: Origen
+   Obligo a los hijos a darme un texto para la columna "Origen/Categoría".
+     */
+    public abstract String getOrigen();
+    /*
      MÉTODOS GETTER
-    "Protected Access Modifier":
-     Sirven para que otros archivos (como la interfaz gráfica) puedan "leer" el valor de estos datos, ya que los datos en sí están protegidos.
+    Protected Access Modifier": Sirven para que otros archivos (como la interfaz gráfica) puedan "leer" el valor de estos datos, ya que los datos en sí están protegidos.
      */
     public String getDescripcion() {
         return descripcion;

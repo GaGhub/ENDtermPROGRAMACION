@@ -12,8 +12,17 @@
 - HelloController.java recibirá esos datos y llamará al GestorFinanzas.
 - GestorFinanzas.java realizará los cálculos de saldo que antes tenía en la consola.  
 ---
-- He modificado el archivo VistaOperaciones.fxml para que sepa quien es el controlador, añadiendo "fx:controller="gui.HelloController". También he añadido onAction para decirle al botón que debe hacer cuando haga clic.
-- He modificado el archivo NuevaOperacion.fxml para que sepa quien es el controlador, añadiendo fx:controller="gui.NuevaOperacionController".
+- He modificado el archivo VistaOperaciones.fxml para que sepa quien es el controlador, añadiendo "fx:controller="Controller.OperacionesController". También he añadido onAction para decirle al botón que debe hacer cuando haga clic.
+- He modificado el archivo NuevaOperacion.fxml para que sepa quien es el controlador, añadiendo fx:controller="Controller.NuevaOperacionController".
 - He modificado HelloApplication para que busque "VistaOperaciones.fxml" dentro de la carpeta "gui" de resources.  
-- PRUEBAS: Actualmente se ejecuta el GUI mostrando el título "Gestión de Finanzas Personales", Mostrando categorías (Tipo, Descripción, Importe(€), Fecha y Origen/Categoria). Además se muestra "No hay operaciones resgistradas.). También aparece el botón (+Nueva Operación). Pero al hacer clic se muestra el mensaje "ERROR: No se ha podido cargar la ventana de Nueva Operación." Lo que indica que reconoce el botón.  
+- PRUEBAS: Actualmente, se ejecuta GUI mostrando el título "Gestión de Finanzas Personales", Mostrando categorías (Tipo, Descripción, Importe(€), Fecha y Origen/Categoria). Además se muestra "No hay operaciones resgistradas.). También aparece el botón (+Nueva Operación). Pero al hacer clic se muestra el mensaje "ERROR: No se ha podido cargar la ventana de Nueva Operación." Lo que indica que reconoce el botón. 
+- He creado la clase NuevaOperacionController. Este archivo sirve para que los botones "Cancelar" y "Guardar" funcionen.  
+- Añado la línea "onAction="#onCancelarClick" en la etiqueta de "cancelar" del archivo NuevaOperacion.fxml para que sepa qué hacer al clicar"
+- Hago lo mismo en el botón "Guardar", pero con la línea onAction="#onGuardarClick"
+- He editado el archivo module-info.java (gestiona los permisos de todo el proyecto). Le añado la línea "opens model to javafx.base;"para qie JavaFX pueda entrar. Lo he hecho porque me salaba un error de acceso.  
+- He actualizado los archivos "Gasto", "Ingreso", "HelloCOntroller" y "Operaciones" porque en la tabla no salían ni el tipo ni la categoría. Faltaban líneas de código para relacionar los archivos.   
+- Ahora que sé que se crean correctamente, he cambiado las categorías que estaban fijadas como "OTROS" o "EFECTIVO" escribiera lo que escribiera el usuario para que devuelva la información escrita.  
+- Modifico la implantación de las ArrayList por los TreeSet. Como ya había implementado la interfaz "Comparable" en la clase "Operacion" para comparar por fecha, el TreeSet utilizará ese método "compareTo" cada vez que añada un elemento. Ya no necesitaré llamar a Collections.sort().  
+- En el gestor de finanzas vuelco el TreeSet a una ArrayList para poder transportar los datos. Después, en HelloController creo la lista observable para devolverla en la tabla.
+- Me he dado cuenta que el ejercicio requería crear un controlador para Operaciones, yo había editado directamente el HelloController. Así que lo he reestructurado entero creando la carpeta "Controller" y añadiendo dentro los 
 
