@@ -18,13 +18,13 @@ public class ConexionDB {
     private static final String USER = "root";
     private static final String PASS = ""; // Deja vacío o pon tu contraseña de MySQL
 
-    /*
-  Constructor privado: evita que se puedan crear instancias con 'new ConexionDB()"desde fuera de esta clase.
-     */
+
+  // Constructor privado: evita que se puedan crear instancias con 'new ConexionDB()"desde fuera de esta clase.
+
     private ConexionDB() {}
 
-    /* Métudo público y estático que devuelve la conexión activa. Si no existe, la crea; si ya existe, devuelve la existente.
-     */
+    // Métudo público y estático que devuelve la conexión activa. Si no existe, la crea; si ya existe, devuelve la existente.
+
     public static Connection getConexion() {
         try {
             // Verifico si la conexión es nula o si se ha cerrado
