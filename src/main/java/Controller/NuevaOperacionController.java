@@ -55,16 +55,52 @@ public class NuevaOperacionController {
      */
     @FXML
     private void onGuardarClick() {
-        try {
+
             // EXTRAIGO DATOS DE LA GUI
             String tipo = cmbTipo.getValue(); // Obtiene "Gasto" o "Ingreso"
             String desc = txtDescripcion.getText(); // Obtiene el texto de descripción
-            double importe = Double.parseDouble(txtImporte.getText()); // Convierte el texto en número decimal
+            String importeTexto = txtImporte.getText();
             LocalDate fecha = dpFecha.getValue(); // Obtiene la fecha del calendario
             String textoUsuario = txtOrigen.getText().toUpperCase();/* Obtengo el origen o categoría. Leo el texto de la caja "Origen" y lo pasamos a MAYÚSCULAS
             porque los Enums suelen estar en mayúsculas (COMIDA, HOGAR...)*/
+        // 2. Compruebo si los campos están vacío o son nulos
+        // .trim() elimina espacios accidentales y .isEmpty() verifica si no hay letras
+        if (importeTexto == null || importeTexto.trim().isEmpty()) {
 
-            // LE APLICO POLIMORFISMO (Concepto clave de los apuntes)
+            // Crear y mostrar la alerta visual
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Campo obligatorio");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Debes introducir un importe para guardar la operación.");
+            alerta.showAndWait();
+
+            return; // IMPORTANTE: El 'return' detiene el métudo aquí y no guarda nada
+        }
+        if (fecha == null) {
+
+            // Crear y mostrar la alerta visual
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Campo obligatorio");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Debes introducir una fecha para guardar la operación.");
+            alerta.showAndWait();
+
+            return; // IMPORTANTE: El 'return' detiene el métudo aquí y no guarda nada
+        }
+        if (textoUsuario.trim().isEmpty()) {
+
+            // Crear y mostrar la alerta visual
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Campo obligatorio");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Debes introducir un origen o categoría para guardar la operación.");
+            alerta.showAndWait();
+
+            return; // IMPORTANTE: El 'return' detiene el métudo aquí y no guarda nada
+        }
+        try {
+            double importe = Double.parseDouble(importeTexto);
+            // LE APLICO POLIMORFISMO
             // Creo una variable de la clase padre (Operacion)
             Operacion nuevaOp;
 
@@ -96,7 +132,7 @@ public class NuevaOperacionController {
             cerrarVentana();
 
         } catch (NumberFormatException e) {
-            System.err.println("ERROR: El importe debe ser un número.");
+            System.err.println("El importe debe tener número válido y no puede estar vació.");
         }
     }
     /*

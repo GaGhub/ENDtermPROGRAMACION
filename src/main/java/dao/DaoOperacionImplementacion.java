@@ -4,9 +4,8 @@ import model.*;
 import java.sql.*;
 import java.util.TreeSet;
 
-/**
- * Implementación concreta del acceso a datos usando JDBC.
- */
+// Implementación concreta del acceso a datos usando JDBC.
+
 public class DaoOperacionImplementacion implements DaoOperacion {
 
     @Override

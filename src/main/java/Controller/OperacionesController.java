@@ -94,8 +94,7 @@ public class OperacionesController {
     /*
  ON NUEVA OPERACIÓN CLIC:
 Este es el "Evento de Acción". En el FXML, el botón debe tener onAction="#onNuevaOperacionClick".
-     */
-    /*
+
 EVENTO: Abrir formulario de Nueva Operación:Este métudo carga el archivo FXML de la pequeña ventana de registro.
      */
     @FXML
