@@ -1,3 +1,4 @@
+
 # ENDTerm - GABRIEL DE LUQUE RAMIS DE AYREFLOR
 
 - He modificado el launcher para que apunte a gui en lugar de a console.  Ahora apunta a "HelloApplication"
@@ -32,7 +33,7 @@
 - Dentro del paquete "dao", he creado el archivo "DaoOperacion", que es la interfaz que establece qué acciones pueden realizar con la base de datos.
 - Dentro del mismo paquete "dao" he creado otro archivo "DaoOperacionImplementacion". Este archivo se encarga de la seguridad con "PreparedStatement". Con ello gestiono las excepciones y evito cierres de programa en caso de error de conexión.
 - He modificado el archivo "GestorFinanzas" para que actue de puente hacia la base de datos. Era necesario actualizarlo porque cambia su función. Yan no es un almacén de datos, sino el intermediario que le pide los datos al DAO que están alojados en mySQL.
-- En el archivo "pom.xml" introduzco la dependencia necesaria para comunicarse con la base de datos de mySQL
 - He ejecutado el launcher, he introducido nuevos datos además del de prueba y he cerrado la aplicación e intelliJ. Al abrir la aplicación de nuevo los datos continuaban ahí, por lo que funciona.  
 - He configurado alertas para que se muestren en una ventana si un campo está vacío. Para ello he creado condiciones para cada campo en el archivo "NuevaOperacionController"
+
 
