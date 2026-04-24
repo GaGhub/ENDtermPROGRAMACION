@@ -1,42 +1,44 @@
 package model;
 
-import java.util.Set;      // Añado Set
-import java.util.TreeSet;   // Importo la implementación TreeSet
+import dao.DaoOperacion;
+import dao.DaoOperacionImplementacion;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-/*
- GESTOR DE FINANZAS (TreeSet)
- Cumple con el requisito de almacenamiento ordenado automático.
+/**
+ * Clase GestorFinanzas (Modelo)
+ * Ahora actúa como puente entre el Controlador y la Capa de Datos (DAO).
  */
 public class GestorFinanzas {
 
-    /*
-  Tarea #1: Usar TreeSet en lugar de ArrayList.
- El TreeSet mantendrá las operaciones ordenadas por fecha automáticamente gracias al compareTo() de la clase Operacion.
-     */
-    private Set<Operacion> listaOperaciones;
+    // Tarea #3: Creamos una instancia de la implementación del DAO
+    private DaoOperacion dao = new DaoOperacionImplementacion();
 
-    public GestorFinanzas() {
-        // Inicializo como TreeSet
-        this.listaOperaciones = new TreeSet<>();
-    }
-
-    /*
- FUNCIÓN: Añadir Operación
-Al usar TreeSet, la colección se encarga de colocar el objeto en la posición correcta según su fecha.
+    /**
+     * Tarea #3: Añade una operación guardándola permanentemente en la base de datos.
+     * Ya no usamos una lista interna en RAM.
      */
     public void añadirOperacion(Operacion op) {
-        listaOperaciones.add(op);
-        // Ya no necesito Collections.sort() El TreeSet nunca se desordena.
+        // Delegamos la responsabilidad de guardar al DAO
+        boolean exito = dao.insertar(op);
+
+        if (!exito) {
+            // Manejo de excepciones según el resumen S05
+            System.err.println("ERROR: No se ha podido guardar la operación en la BD.");
+        }
     }
 
-    /*
- FUNCIÓN: Obtener lista (para la tabla de la interfaz). Como la tabla de JavaFX (TableView) necesita trabajar con Listas, convierto el Set a una Lista justo antes de enviarlo.
+    /**
+     * Tarea #3: Recupera todas las operaciones directamente desde MySQL.
+     * Esto asegura que los datos persistan aunque cerremos la aplicación.
      */
     public List<Operacion> getListaOperaciones() {
-        return new ArrayList<>(listaOperaciones);
+        // El DAO nos devuelve un TreeSet (manteniendo el orden de la Tarea #1)
+        Set<Operacion> datosDeBD = dao.listarTodas();
+
+        // Convertimos el Set a una List para que sea compatible con la TableView de JavaFX
+        return new ArrayList<>(datosDeBD);
     }
 
 }
-
