@@ -35,5 +35,6 @@
 - He modificado el archivo "GestorFinanzas" para que actue de puente hacia la base de datos. Era necesario actualizarlo porque cambia su función. Yan no es un almacén de datos, sino el intermediario que le pide los datos al DAO que están alojados en mySQL.
 - He ejecutado el launcher, he introducido nuevos datos además del de prueba y he cerrado la aplicación e intelliJ. Al abrir la aplicación de nuevo los datos continuaban ahí, por lo que funciona.  
 - He configurado alertas para que se muestren en una ventana si un campo está vacío. Para ello he creado condiciones para cada campo en el archivo "NuevaOperacionController"
-
+- ENLACE VÍDEO DEMOSTRACIÓN: https://drive.google.com/file/d/1lITq_6RCXLCtuZ3u8sChgGdY9psyySMT/view?usp=sharing
+  
 
